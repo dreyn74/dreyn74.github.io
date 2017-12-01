@@ -6,12 +6,44 @@
     <link rel="import" href="/bower_components/simpla-text/simpla-text.html">
     <link rel="import" href="/bower_components/simpla-img/simpla-img.html">
     <link rel="import" href="/bower_components/simpla-admin/simpla-admin.html" async>
+    <!-- Include Simpla, Netlify auth adapter, and cross-browser polyfill-->
+    <script src="https://unpkg.com/simpla@^3.0.0"></script>
+    <script src="https://unpkg.com/simpla@^3.0.0/adapters/netlify.js"></script>
+    <script src="https://unpkg.com/webcomponents.js@^0.7.24/webcomponents-lite.min.js" async></script>
+
+    <!-- Init Simpla -->
+    <script>
+      Simpla.init({
+
+        // The Github repo you want Simpla to use
+        repo: 'dreyn74/dreyn74.github.io',
+
+        // Netlify auth adapter, initialize with your Netlify site name
+        auth: new SimplaNetlify({ site: 'festive-bhabha-45c653' }),
+
+        // Public content source (optional)
+        // Defaults to fetching directly from Github
+        source: 'https://festive-bhabha-45c653.netlify.com'
+
+      });
+    </script>
   </head>
   <body>
     <!-- Block of editable richtext -->
     <simpla-text path="/text"></simpla-text>
-
     <!-- An editable image -->
     <img is="simpla-img" path="/section/img">
+    <simpla-article id="post"></simpla-article>
+
+  <script>
+    // Get post slug from URL
+    var post = document.querySelector('#post'),
+        path = window.location.pathname,
+        slug = path.split('blog/').pop();
+
+    // Set post path to fetch/create post
+    post.path = '/posts/' + slug;
+  </script>
+
   </body>
 </html>
