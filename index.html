@@ -5,6 +5,7 @@
     <!-- Import Simpla elements -->
     <link rel="import" href="/bower_components/simpla-text/simpla-text.html">
     <link rel="import" href="/bower_components/simpla-img/simpla-img.html">
+    <link rel="import" href="/bower_components/simpla-paths/simpla-paths.html">
     <link rel="import" href="/bower_components/simpla-article/simpla-article.html">
     <link rel="import" href="/bower_components/simpla-admin/simpla-admin.html" async>
     <!-- Include Simpla, Netlify auth adapter, and cross-browser polyfill-->
@@ -30,7 +31,7 @@
   </head>
   <body>
     <!-- Block of editable richtext -->
-    <simpla-text path="/text"></simpla-text>
+    <simpla-text path="_content/data/text"></simpla-text>
     <!-- An editable image -->
     <img is="simpla-img" path="/section/img">
     <simpla-article id="post"></simpla-article>
